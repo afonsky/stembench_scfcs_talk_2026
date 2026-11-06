@@ -40,9 +40,11 @@ mdc: true
 
 ## LLM Benchmark<br> for Postdoc-level Natural Science Problems<br><br>
 ### FCS Scientific Conference<br><br>
-### Alina Avanesyan, <u>Alexey Boldyrev</u>, Denis Derkach, Mary Godunova, Mikhail Hushchyn, Dmitry Ilvovsky, Irina Knyazeva, Fedor Ratnikov, Ekaterina Trofimova<br><br>
+### Alina Avanesyan, <u>Alexey Boldyrev</u>, Denis Derkach, Mary Godunova, Mikhail Hushchyn, Dmitry Ilvovsky, Irina Knyazeva, <u>Fedor Ratnikov</u>, Ekaterina Trofimova<br><br>
 
-#### HSE Voronovo November, 7th, 2026
+<br>
+
+#### HSE Voronovo<br> November, 7th, 2026
 
 <!--
 Good morning. I will talk about how we test whether large language models can do real scientific work, not textbook exercises, and why we put so much effort into making those tests reproducible.
@@ -219,7 +221,7 @@ Natural sciences are different. We study entities that are given to us from outs
 
 <div v-click class="callout mt-6">
 
-Scientific papers usually present tasks of the **"PhD student"** class. Tasks of the **"Master+"** level are ill-defined (open-ended).
+Scientific papers usually present tasks of the **"PhD student"** and **Postdoc** classes. **Postdoc**-level tasks are typically open-ended.
 
 </div>
 
@@ -228,6 +230,8 @@ We grade tasks by the independence they require. A bachelor task is a technical 
 -->
 
 ---
+zoom: 1.1
+---
 
 # Task levels
 
@@ -235,10 +239,10 @@ We grade tasks by the independence they require. A bachelor task is a technical 
 
 | Level | Task |
 |---|---|
-| "Bachelor" | a well-defined technical task |
-| "Master" | a well-defined goal; choose a suitable method independently and obtain the answer |
-| "PhD student" | a well-defined direction; set a specific goal independently and achieve it |
-| "Postdoc" | a general problem; determine the direction of the solution independently and implement it |
+| **"Bachelor"** | a well-defined technical task |
+| **"Master"** | a well-defined goal; choose a suitable method independently and obtain the answer |
+| **"PhD student"** | a well-defined direction; set a specific goal independently and achieve it |
+| **"Postdoc"** | a general problem; determine the direction of the solution independently and implement it |
 
 </div>
 
@@ -248,7 +252,7 @@ We grade tasks by the independence they require. A bachelor task is a technical 
 
 - Olympiad problems are well-defined "sporting" tasks, formally of the **"Master"** class
 - In reality, olympiad problems lie **outside the class of scientific tasks**: the right answer and the scoring metric are known in advance
-- Tasks of the **"PhD student+"** level are ill-defined (open-ended)
+- Tasks of the **"PhD student+"** level are open-ended
 - Scientific papers usually solve tasks of the "PhD student" class
 
 </v-clicks>
@@ -267,7 +271,7 @@ Olympiad problems are sporting tasks: formally master class, but the correct ans
 
 <v-clicks>
 
-- Must assess **reasoning**, not the model's memory
+- Must assess **reasoning**, not the model's memory?
 - Must be **reproducible**?
 - Must assess the **best, median or worst** solution?
 - Must give a **quantitative** score
@@ -334,6 +338,8 @@ So the natural question is whether an LLM can do what a postdoc does. As physici
 
 <span class="refs">Levels from Zheng et al., "From Automation to Autonomy: A Survey on LLMs in Scientific Discovery", EMNLP 2025</span>
 
+### Well-posed research problem doesn't exist, only engineering (ML) problems can be truly well-posed.
+
 <!--
 A useful vocabulary: three levels of autonomy. Literature search and idea generation are fairly mature. Closed-loop analysis on real data is not.
 
@@ -342,9 +348,9 @@ By "postdoc level" we mean: someone hands you a well-posed research problem and 
 
 ---
 
-# How do today's benchmarks decide who is right?
+# How do today's benchmarks decide who is better?
 
-<div class="grid grid-cols-4 gap-3 mt-4 text-base">
+<div class="grid grid-cols-5 gap-3 mt-4 text-base">
   <div class="card">
     <div class="ic"><carbon-checkmark-outline /></div>
     <b>Answer key</b>
@@ -360,14 +366,20 @@ By "postdoc level" we mean: someone hands you a well-posed research problem and 
   <div class="card">
     <div class="ic"><carbon-chart-line /></div>
     <b>Leaderboard rank</b>
-    <div class="ex">MLE-bench (Kaggle competitions)</div>
+    <div class="ex">MLE-bench<br> (Kaggle competitions)</div>
     <i>Where would you place?</i>
   </div>
   <div class="card">
     <div class="ic"><carbon-user-multiple /></div>
-    <b>Rubric or LLM judge</b>
-    <div class="ex">PaperBench, COMPOSITE-STEM, LifeSciBench</div>
+    <b>Expert</b>
+    <div class="ex">Humanity's Last Exam, MT-Bench (expert part)</div>
     <i>Does it look right to a reviewer?</i>
+  </div>
+  <div class="card">
+    <div class="ic"><carbon-bot /></div>
+    <b>LLM judge</b>
+    <div class="ex">PaperBench, COMPOSITE-STEM, LifeSciBench</div>
+    <i>Have all the criteria been met?</i>
   </div>
 </div>
 
@@ -391,12 +403,12 @@ All four are useful, but none of them is how physicists actually decide that a n
 
 | | Exercise | Research problem |
 |---|---|---|
-| **Solutions** | one correct answer | many admissible methods, *ranked* by quality |
+| **Solutions** | well-defined correct answer | many admissible methods, *ranked* by quality |
 | **Deliverable** | a number or a formula | working code and a model that generalise to unseen data |
-| **Data** | fits in the prompt | 0.1–12 GB; deciding what to look at is part of the job |
-| **Scoring** | right / wrong | the field's figure of merit: a sharp interval that misses loses to a wider one that covers |
-| **Failures** | visible in the answer | silent: data leakage, unphysical models; only withheld data exposes them |
-| **Ceiling** | 100% | empirical: ≈ 0.75 AUC is the published limit for cross-scanner autism diagnosis |
+| **Data** | fits in the prompt | 0.1–10+ GB; deciding what to look at is part of the job |
+| **Scoring** | right / wrong | the field's figure of merit with the correct error (right coverage) of the result number |
+| **Failures** | directly visible from the answer | silent: data leakage, unphysical models; only withheld data exposes them |
+| **Ceiling** | 100% | empirical: e.g. 0.75 AUC is the published limit for cross-scanner autism diagnosis |
 
 </div>
 
@@ -419,8 +431,9 @@ This table is the core of our problem formulation. Research problems have many a
 <v-clicks>
 
 - Each problem is scored by the **figure of merit its community already uses** to compare published methods
-- Two **anchors**, both obtained by *running code we ship*, never copied from a paper
-- Every score is read against the interval $[b, e]$, not against a perfect 1.0
+- Two **anchors**: "baseline" ($b$) and "expert" ($e$), both obtained by *running code we ship*
+  - baseline - minimal solution (e.g. random choice for classification problem)
+  - expert - use some domain knowledge. Not necessary just the best
 
 </v-clicks>
 
@@ -441,38 +454,40 @@ The interval between them, the headroom, is the part of the problem crossed by s
 -->
 
 ---
+zoom: 1.15
+---
 
-# Twelve research problems, three sciences
+# Three sciences, twelve research problems
 
 <div class="grid grid-cols-3 gap-4 mt-1 tasks">
 <div class="card">
   <div class="dom">Particle physics <span>×4</span></div>
   <div class="why">big data, hypothesis-free search</div>
   <ul>
-    <li>New-physics search at the LHC, no labels <em>0.33→0.91</em></li>
-    <li>Higgs signal strength with honest error bars <em>0.40→0.69</em></li>
-    <li>Top-quark jet tagging <em>0.06→0.88</em></li>
-    <li>Anomaly detection, signal never shown <em>0.00→0.22</em></li>
+    <li>New-physics search at the LHC, no labels <em style="color:red">0.33→0.91</em></li>
+    <li>Higgs signal strength with honest error bars <em style="color:red">0.40→0.69</em></li>
+    <li>Top-quark jet tagging <em style="color:red">0.06→0.88</em></li>
+    <li>Anomaly detection, signal never shown <em style="color:red">0.00→0.22</em></li>
   </ul>
 </div>
 <div class="card">
   <div class="dom">Astrophysics <span>×3</span></div>
   <div class="why">ill-posed inversion with uncertainty</div>
   <ul>
-    <li>Solar magnetic fields from polarised spectra, simulated <em>0.01→0.62</em></li>
-    <li>… from real Hinode telescope data <em>0.00→0.60</em></li>
-    <li>Type Ia supernovae from sparse light curves <em>0.42→0.85</em></li>
+    <li>Solar magnetic fields from polarised spectra, simulated <em style="color:red">0.01→0.62</em></li>
+    <li>… from real Hinode telescope data <em style="color:red">0.00→0.60</em></li>
+    <li>Type Ia supernovae from sparse light curves <em style="color:red">0.42→0.85</em></li>
   </ul>
 </div>
 <div class="card">
   <div class="dom">Neuroscience <span>×5</span></div>
   <div class="why">forward models, cross-site generalisation</div>
   <ul>
-    <li>Autism from fMRI, on unseen scanners <em>0.00→0.31</em></li>
-    <li>Identify the neural-mass model family <em>0.00→0.90</em></li>
-    <li>Digital twin: predict an intervention's effect <em>0.10→0.72</em></li>
-    <li>Recover hidden brain-model parameters <em>0.13→0.52</em></li>
-    <li>Recover neural drive from BOLD signal <em>0.01→0.35</em></li>
+    <li>Autism from fMRI, on unseen scanners <em style="color:red">0.00→0.31</em></li>
+    <li>Identify the neural-mass model family <em style="color:red">0.00→0.90</em></li>
+    <li>Digital twin: predict an intervention's effect <em style="color:red">0.10→0.72</em></li>
+    <li>Recover hidden brain-model parameters <em style="color:red">0.13→0.52</em></li>
+    <li>Recover neural drive from BOLD signal <em style="color:red">0.01→0.35</em></li>
   </ul>
 </div>
 </div>
@@ -486,20 +501,24 @@ The grey numbers are the two anchors. Look at the autism task: the expert reache
 -->
 
 ---
+zoom: 1.05
+---
 
 # Close-up: reading the Sun's magnetic field
 
 <div class="grid grid-cols-[1.15fr_1fr] gap-8 mt-1">
 <div class="text-[17px] leading-snug closeup">
 
-**Task.** From a polarised spectrum (4 Stokes profiles × 56 wavelengths), recover 11 physical parameters with 80% intervals, for 10,000 pixels.
+**Task.** From a polarised spectrum ($4$ Stokes profiles × $56$ wavelengths), recover $11$ physical parameters with $80\%$ intervals, for $10\,000$ pixels.
 
-**Physics traps, by design**
-- azimuth is defined only modulo 180°
+**Physics traps, by design**:
+- azimuth is defined only modulo $180^\circ$
 - some parameters are *exactly* unobservable at singular points
 - a weak field filling the pixel ≈ a strong field filling part of it
 
-**The agent also submits its own physics model.** The grader re-synthesises spectra from the predicted parameters in an isolated container.
+<br>
+
+> #### **The agent has to build a physics model to mitigate those traps.** The grader then generates spectra from the predicted parameters in an isolated container.
 
 </div>
 <div class="flex flex-col gap-4">
@@ -512,7 +531,8 @@ The grey numbers are the two anchors. Look at the autism task: the expert reache
 
   - **R**: calibrated parameter recovery, relative to a no-skill predictor
   - **F**: does *your* physics reproduce the observed spectrum? Scaled by physical-validity probes
-  - The geometric gate means a perfect spectral fit with nonsense parameters earns nothing
+  - Why this score?
+     - The geometric gate means a perfect spectral fit with nonsense parameters earns nothing
 
   </div>
 </div>
@@ -524,6 +544,8 @@ One task in detail, to show what "research problem" means in practice. Solar phy
 The agent must also submit its own forward model. Note the square root in the score: you cannot win by fitting the spectrum while getting the physics wrong. This is how we defend against gaming the metric.
 -->
 
+---
+zoom: 1.1
 ---
 
 # How one evaluation run works
@@ -552,7 +574,7 @@ The agent must also submit its own forward model. Note the square root in the sc
 </div>
 
 <div v-click class="logstrip mt-5">
-  <carbon-recording class="inline" /> <b>Every run is recorded:</b> each message, tool call, token, dollar, run setting and score, in the open log format of the <i>Inspect</i> framework (UK AI Security Institute). Any run can be replayed and audited.
+  <carbon-recording class="inline" /> <b>Every run is recorded:</b> each message, tool call, token, dollar, run setting and score, in the open log format of the <a href="https://github.com/UKGovernmentBEIS/inspect_ai">Inspect framework</a>. Any run can be replayed and audited.
 </div>
 
 <div v-click class="text-base mt-4 muted">
@@ -573,23 +595,26 @@ layout: statement
 
 # A benchmark is a measuring instrument
 
-<div class="text-2xl mt-6 muted">If others cannot re-measure our number, it is an anecdote, not a result.</div>
-
 <!--
 Now the part that matters most to us. We come from experimental physics, where a number without a protocol and an uncertainty is not a result. A benchmark is a measuring instrument for models, and it deserves the same standards.
 -->
 
 ---
+zoom: 1.1
+---
 
 # Why LLM evaluations are hard to reproduce
+
+<br>
 
 <div class="grid grid-cols-2 gap-x-10 gap-y-4 mt-4 text-lg threats">
   <div><carbon-shuffle class="ti" /> <b>Stochastic models.</b> For reasoning models, our API route doesn't even expose the sampling temperature</div>
   <div><carbon-renew class="ti" /> <b>Moving targets.</b> Providers update models and routing behind the same name</div>
-  <div><carbon-cloud-offline class="ti" /> <b>Fragile infrastructure.</b> Network drops, timeouts, a GPU silently missing</div>
+  <div><carbon-warning class="ti" /> <b>Single runs.</b> One lucky or unlucky run gets reported as "the" score</div>
   <div><carbon-version class="ti" /> <b>Drifting setups.</b> Package versions, data versions, task revisions, run limits</div>
   <div><carbon-user-multiple class="ti" /> <b>Subjective judges.</b> Rubric or LLM-judge scores can't be re-executed</div>
-  <div><carbon-warning class="ti" /> <b>Single runs.</b> One lucky or unlucky run gets reported as "the" score</div>
+  <div><carbon-cloud-offline class="ti" />
+<b>Complex infrastructure.</b> Non-negligible fault probability</div>
 </div>
 
 <div v-click class="callout mt-8">
@@ -604,6 +629,8 @@ Why is this hard for LLMs specifically? The model itself is stochastic and, for 
 Each of these effects can be larger than the gap between two models on a leaderboard.
 -->
 
+---
+zoom: 1.12
 ---
 
 # Reproducibility by design
@@ -628,14 +655,12 @@ The last row is easy to miss: we also require the agent's own solution to be rep
 -->
 
 ---
+zoom: 1.2
+---
 
-# Statistics, not anecdotes
+# Experiments statistics
 
-<div class="grid grid-cols-3 gap-4 mt-3">
-  <div class="stat"><div class="n">288</div><div class="l">retained runs: 8 models × 12 tasks × 3 repeats</div></div>
-  <div class="stat"><div class="n">±0.06 <span>/ ±0.02</span></div><div class="l">single-run spread / error of the mean, 10 valid runs of one configuration</div></div>
-  <div class="stat"><div class="n">0.933 <span>vs 0.92–0.94</span></div><div class="l">same task and model on the HSE HPC cluster (Apptainer) vs a cloud VM (Docker)</div></div>
-</div>
+> ## $288$ retained runs: $8$ models × $12$ tasks × $3$ repeats
 
 <div class="mt-6 text-lg">
 
@@ -658,8 +683,10 @@ Runs are often bimodal, so a single run can mislead in either direction. Infrast
 -->
 
 ---
+zoom: 1.15
+---
 
-# Reproducibility caught us, four times
+# Reproducibility issues
 
 <div class="grid grid-cols-2 gap-4 mt-2 text-base lessons">
   <div class="card"><b>1 · Launch notes vs. logged config.</b> A batch described as "extended limits + GPU" had actually run with the default limits. Only the config recorded in each run revealed it.</div>
@@ -670,7 +697,7 @@ Runs are often bimodal, so a single run can mislead in either direction. Infrast
 
 <div v-click class="callout mt-5">
 
-Each would have produced a confident, wrong conclusion. Logs and versioned task contracts turned them into footnotes.
+Each would have produced a confident, but wrong conclusion. Logs and versioned task contracts turned them into footnotes.
 
 </div>
 
@@ -681,10 +708,14 @@ A batch we believed had larger limits had actually run with the defaults; the lo
 -->
 
 ---
+zoom: 1.
+---
 
-# Seven of twelve: an agent beats the reproduced expert
+# In 7 of 12 problems agent beats the expert
 
 <div class="text-base muted -mt-3 mb-1">8 frontier models · high reasoning effort · mean of 3 runs · identical prompt, tools and budget</div>
+
+<br>
 
 <HeadroomChart />
 
@@ -695,12 +726,14 @@ On seven of twelve tasks, at least one model's mean exceeds the reproduced publi
 -->
 
 ---
+zoom: 1.04
+---
 
 # Where agents still fall short
 
 <div class="tbl short mt-2">
 
-| Task | Best mean | Expert | What it requires |
+| Task | Best mean | Expert | What agent missed |
 |---|---|---|---|
 | Higgs signal strength with error bars | 0.48 | 0.69 | **calibrated uncertainty** |
 | Brain-model digital twins | 0.31 | 0.72 | **causal** prediction of an intervention |
@@ -712,9 +745,10 @@ On seven of twelve tasks, at least one model's mean exceeds the reproduced publi
 
 <v-clicks>
 
-- The hard part is exactly what **only withheld data can reveal**: honest uncertainty, causal response, hidden parameters, unseen sites
-- On digital twins the best agent is still closer to the baseline (0.10) than to the expert
-- Single runs do cross the expert on two of these (autism 0.314, parameters 0.583), so here **reliability** is the gap, not ability
+- The domain knowledge is crucially important here, but agents failed to get into it
+- Also observed:
+  - On digital twins the best agent is still closer to the baseline (0.10) than to the expert
+  - Single runs do cross the expert on two of these (autism 0.314, parameters 0.583), so here **reliability** is the gap, not ability
 
 </v-clicks>
 
@@ -728,26 +762,9 @@ On two of these, individual runs do cross the expert line, so the problem is con
 
 # There is no "best model for science"
 
-<div class="grid grid-cols-[1.35fr_1fr] gap-8 mt-1">
-<div>
-  <div class="text-sm muted mb-1">Domain mean score (outlined: domain leader)</div>
-  <DomainHeatmap />
-</div>
-<div class="text-base flex flex-col gap-3 pt-5">
-
-- **DeepSeek V4 Pro** leads particle physics
-- **Gemini 3.1 Pro** leads astro and neuro
-- **Claude Opus 5** leads 5 tasks, yet no domain
-- Gemini's own domains span 0.32–0.84
-
-</div>
-</div>
-
-<div class="mt-5">
-  <div class="text-sm muted mb-1">Share of variation across the 96 task × model means</div>
-  <VarianceBar />
-  <div v-click class="text-lg mt-3"><b>Which task</b> explains 5× more than <b>which model</b>. One aggregate leaderboard number hides this.</div>
-</div>
+<center>
+<img src="./scores_domain_means_2.svg" class="h-[430px]"/>
+</center>
 
 <!--
 Task wins and domain leadership come apart. DeepSeek leads particle physics, Gemini leads astrophysics and neuroscience, and Claude wins five individual tasks but leads no domain.
@@ -756,11 +773,14 @@ A simple variance decomposition makes the point quantitatively: 60% of the varia
 -->
 
 ---
+zoom: 1.1
+---
 
 # Ability vs. reliability
 
-<div class="grid grid-cols-[1.1fr_1fr] gap-8 mt-2">
+<div class="grid grid-cols-[1.2fr_1fr] gap-8 mt-2">
 <div>
+<br>
   <div class="text-sm muted mb-1">Particle-physics domain score per model</div>
   <ReliabilityDumbbell />
 </div>
@@ -790,12 +810,11 @@ And because we record validity separately, we know that a zero is not automatica
 
 <v-clicks>
 
-1. **Science has no answer key.** Judge agents the way a field judges methods: its own figure of merit, plus two measured anchors
-2. Frontier agents already **beat reproduced published methods on 7 of 12** research problems
+1. **Science problems have no right answer key.** We approach answer by a combined score metrics favorable by the field experts
+2. Frontier agents in our runs **beat reproduced published methods on 7 of 12** research problems
 3. They still fall short on **uncertainty, causal and latent inference, cross-site generalisation**
-4. There is **no single "best model for science"**: the task explains 60% of the variation, the model 12%
+4. There is **no single "best model for science"**: the task rather then model drives most of the variation
 5. **Reproducibility is the backbone**: frozen data, fixed containers, deterministic graders, full logs, repeated runs, and an honest record of what went wrong
-6. **Models lack scientific ethics**
 
 </v-clicks>
 
@@ -857,11 +876,12 @@ Every number in this talk can be traced to a logged, re-runnable experiment.
 
 # Backup: per-task scores for all models
 
-<div class="flex gap-6 items-start">
-  <img src="./images/scores_per_task.png" class="h-[420px]" alt="Per-task raw scores of eight models with baseline and expert anchors" />
-  <div class="text-sm muted mt-8 max-w-[260px]">
+<center>
+<img src="./scores_per_task_2.svg" class="h-[430px]"/>
+</center>
 
-  Marker: mean of 3 retained runs (zeros included). Bars: min–max of the 3 runs, not confidence intervals. Dashed line: baseline *b*; solid line: expert *e*. Basic agent, high reasoning effort.
+---
 
-  </div>
-</div>
+# Backup: example of fragment of reasoning trace
+
+<img src="/reasoning_trace_fragment.png" class="h-[420px]" alt="An example of fragment of reasoning trace" />
