@@ -218,6 +218,10 @@ Natural sciences are different. We study entities that are given to us from outs
 | **"Postdoc"** | a general problem; determine the direction of the solution independently and implement it |
 
 </div>
+<br>
+
+- Olympiad problems are well-defined "sporting" tasks, formally of the **"Master"** class
+- In reality, olympiad problems lie **outside the class of scientific tasks**: the right answer and the scoring metric are known in advance
 
 <div v-click class="callout mt-6">
 
@@ -227,40 +231,6 @@ Scientific papers usually present tasks of the **"PhD student"** and **Postdoc**
 
 <!--
 We grade tasks by the independence they require. A bachelor task is a technical exercise. A master task has a goal but you choose the method. A PhD student picks the goal inside a direction. A postdoc gets only a general problem. Typical papers solve PhD-student-class tasks, and everything from master upward is open-ended.
--->
-
----
-zoom: 1.1
----
-
-# Task levels
-
-<div class="tbl lv mt-1">
-
-| Level | Task |
-|---|---|
-| **"Bachelor"** | a well-defined technical task |
-| **"Master"** | a well-defined goal; choose a suitable method independently and obtain the answer |
-| **"PhD student"** | a well-defined direction; set a specific goal independently and achieve it |
-| **"Postdoc"** | a general problem; determine the direction of the solution independently and implement it |
-
-</div>
-
-<div class="text-lg mt-4">
-
-<v-clicks>
-
-- Olympiad problems are well-defined "sporting" tasks, formally of the **"Master"** class
-- In reality, olympiad problems lie **outside the class of scientific tasks**: the right answer and the scoring metric are known in advance
-- Tasks of the **"PhD student+"** level are open-ended
-- Scientific papers usually solve tasks of the "PhD student" class
-
-</v-clicks>
-
-</div>
-
-<!--
-Olympiad problems are sporting tasks: formally master class, but the correct answer and the metric are known beforehand. That is why they are not really scientific tasks. Real research starts where the problem is ill-defined.
 -->
 
 ---
@@ -396,6 +366,8 @@ All four are useful, but none of them is how physicists actually decide that a n
 -->
 
 ---
+zoom: 1.05
+---
 
 # An exercise vs. a research problem
 
@@ -414,7 +386,7 @@ All four are useful, but none of them is how physicists actually decide that a n
 
 <div v-click class="mt-4 text-lg">
 
-<carbon-idea class="inline text-[#5d8392]" /> In every one of our tasks, the gap to the expert is closed by a **domain insight**, not by more compute.
+<carbon-idea class="inline text-[#5d8392]" /> In every one of our tasks, the gap to the expert is closed by a **domain insight**, not by more compute
 
 </div>
 
