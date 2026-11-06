@@ -50,6 +50,240 @@ Good morning. I will talk about how we test whether large language models can do
 
 ---
 
+# Chess rating
+
+<div class="grid grid-cols-[1fr_1.5fr] gap-8 mt-2">
+<div class="text-lg flex flex-col gap-4">
+
+**How to measure?**
+
+<v-clicks>
+
+- head-to-head comparison tests
+- a well-defined metric
+- win / loss / draw
+
+</v-clicks>
+
+<div v-click class="callout">
+
+AI overtook humans and kept going, without slowing down: **no biological limits**.
+
+</div>
+
+</div>
+<img src="./images/chess_elo.png" class="shot w-full" alt="Elo rating of the best chess engine vs. top human players, 1996–2026" />
+</div>
+
+<!--
+Chess is the classic case of a clean measurement: games, a well-defined metric, win, loss or draw. Engines passed the best humans long ago and kept climbing, because they have no biological limits.
+-->
+
+---
+
+# IMO
+
+<div class="grid grid-cols-[auto_1fr] gap-10 mt-1 items-start">
+<div class="relative w-[390px]">
+  <img src="./images/imo_2024.png" class="w-full" alt="Score on IMO 2024 problems" />
+  <div class="imo-line" style="top: 19.2%"><span>2026 (42/42)</span></div>
+  <div class="imo-line" style="top: 30.8%"><span>2025 (35/42)</span></div>
+  <div class="imo-line" style="top: 42.4%"><span>2024 (28/42)</span></div>
+</div>
+<div class="flex flex-col gap-6">
+  <img src="./images/imo_headline.png" class="shot w-full" alt="AI achieves silver-medal standard solving International Mathematical Olympiad problems" />
+  <div v-click class="callout text-lg">
+
+AI solves mathematical olympiads
+
+  </div>
+</div>
+</div>
+
+<!--
+Mathematical olympiads: in 2024 a system got 28 of 42 points, a silver-medal standard. In 2025 it scored 35, and in 2026 the full 42.
+-->
+
+---
+
+# Exact sciences
+
+<div class="grid grid-cols-[1fr_1.1fr] gap-8 mt-2">
+<div class="text-lg">
+
+**Strictly formalised**
+
+- tasks are well defined
+
+**Use logic**
+
+- well suited to demonstrate AI capabilities
+
+</div>
+<div class="flex flex-col gap-4">
+  <img v-click src="./images/tao_letter.png" class="shot w-full" alt="Terence Tao: A Severe Misalignment of AI in Mathematics" />
+  <img src="./images/navier_stokes.png" class="shot w-[85%]" alt="On the Navier–Stokes Millennium Prize Problem" />
+</div>
+</div>
+
+<!--
+Exact sciences are strictly formalised, and they rely on logic, so they are a natural showcase for AI. But even here the community is not unanimous: Fields medallists have published a statement about a severe misalignment of AI in mathematics.
+-->
+
+---
+
+# Benchmarks of AI models
+
+<div class="grid grid-cols-[1fr_1.5fr] gap-8 -mt-2">
+<div class="text-lg flex flex-col gap-6">
+
+<div>
+
+Suppose that for mathematics (and other exact sciences?) AI capability benchmarks are evil and lead to degradation…
+
+</div>
+
+<div v-click class="q">
+
+How should AI developers compete for users, attract them to new releases, and justify that model X is the best?
+
+</div>
+
+</div>
+<div class="flex flex-col gap-3">
+  <img src="./images/tao_letter.png" class="shot w-[62%]" alt="Terence Tao: A Severe Misalignment of AI in Mathematics" />
+  <div class="card theses">
+
+Key theses of the Fields medallists' open letter ("A Severe Misalignment of AI in Mathematics"):
+
+- **Marketing benchmarks:** AI companies use great mathematical problems to show off computing power, not for genuine scientific understanding.
+- **Loss of the value of the journey:** the chase for instant AI answers devalues the human search of many years that created new areas of mathematics.
+- **The "black box" problem:** bulky AI-generated proof texts lack human intuition and demand colossal effort from mathematicians to decipher.
+- **Education crisis:** AI dominance in solving key problems destroys the intelligible environment and the motivation for training young researchers.
+- **Threat to open science:** fearing hidden plagiarism and idea capture by AI companies from private sessions, scientists will stop sharing intermediate results.
+
+</div>
+</div>
+</div>
+
+<!--
+If benchmarks really harm mathematics, as the open letter argues, then how do AI developers show that their model is better? We need benchmarks, but benchmarks that measure something real.
+-->
+
+---
+
+# Natural sciences
+
+<div class="text-xl mt-2">
+
+- Cognition of externally given entities
+- No rigorous solutions
+- No exact answers
+  - any measurement has a confidence interval
+  - any prediction has a confidence interval
+
+</div>
+
+<div v-click class="q mt-4">
+
+How to assess the correctness of a measurement or prediction?
+
+</div>
+
+<v-clicks>
+
+- internal self-consistency
+- consistency with existing observations
+- authoritative subjective assessment of correctness by experts
+
+</v-clicks>
+
+<!--
+Natural sciences are different. We study entities that are given to us from outside, there are no rigorous solutions and no exact answers: every measurement and every prediction comes with an interval. So correctness has to be judged by self-consistency, agreement with observations, or, in the end, by expert opinion.
+-->
+
+---
+
+# Task levels
+
+<div class="tbl mt-3 text-lg">
+
+| Level | Task |
+|---|---|
+| **"Bachelor"** | a well-defined technical task |
+| **"Master"** | a well-defined goal; choose a suitable method independently and obtain the answer |
+| **"PhD student"** | a well-defined direction; set a specific goal independently and achieve it |
+| **"Postdoc"** | a general problem; determine the direction of the solution independently and implement it |
+
+</div>
+
+<div v-click class="callout mt-6">
+
+Scientific papers usually present tasks of the **"PhD student"** class. Tasks of the **"Master+"** level are ill-defined (open-ended).
+
+</div>
+
+<!--
+We grade tasks by the independence they require. A bachelor task is a technical exercise. A master task has a goal but you choose the method. A PhD student picks the goal inside a direction. A postdoc gets only a general problem. Typical papers solve PhD-student-class tasks, and everything from master upward is open-ended.
+-->
+
+---
+
+# Task levels
+
+<div class="tbl lv mt-1">
+
+| Level | Task |
+|---|---|
+| "Bachelor" | a well-defined technical task |
+| "Master" | a well-defined goal; choose a suitable method independently and obtain the answer |
+| "PhD student" | a well-defined direction; set a specific goal independently and achieve it |
+| "Postdoc" | a general problem; determine the direction of the solution independently and implement it |
+
+</div>
+
+<div class="text-lg mt-4">
+
+<v-clicks>
+
+- Olympiad problems are well-defined "sporting" tasks, formally of the **"Master"** class
+- In reality, olympiad problems lie **outside the class of scientific tasks**: the right answer and the scoring metric are known in advance
+- Tasks of the **"PhD student+"** level are ill-defined (open-ended)
+- Scientific papers usually solve tasks of the "PhD student" class
+
+</v-clicks>
+
+</div>
+
+<!--
+Olympiad problems are sporting tasks: formally master class, but the correct answer and the metric are known beforehand. That is why they are not really scientific tasks. Real research starts where the problem is ill-defined.
+-->
+
+---
+
+# Requirements for a benchmark
+
+<div class="text-xl mt-4 reqs">
+
+<v-clicks>
+
+- Must assess **reasoning**, not the model's memory
+- Must be **reproducible**?
+- Must assess the **best, median or worst** solution?
+- Must give a **quantitative** score
+- Must be **sensitive** to model quality
+- Must not be **too specialised**
+
+</v-clicks>
+
+</div>
+
+<!--
+What do we need from a benchmark? It should test reasoning and not memory, give a number, be sensitive to model quality, and not be too narrow. Two requirements are still open questions: reproducibility, and whether we score the best, the median or the worst solution. The rest of the talk is our answer.
+-->
+
+---
+
 # LLMs are acing science exams
 
 <div class="grid grid-cols-[1.3fr_1fr] gap-10 mt-4">
@@ -561,11 +795,12 @@ And because we record validity separately, we know that a zero is not automatica
 3. They still fall short on **uncertainty, causal and latent inference, cross-site generalisation**
 4. There is **no single "best model for science"**: the task explains 60% of the variation, the model 12%
 5. **Reproducibility is the backbone**: frozen data, fixed containers, deterministic graders, full logs, repeated runs, and an honest record of what went wrong
+6. **Models lack scientific ethics**
 
 </v-clicks>
 
 <!--
-To summarise. Scientific problems need scientific criteria, anchored at both ends. With those criteria, frontier agents already beat reproduced published methods on most of our tasks, but they fail where science is hardest to fake: uncertainty, causality, hidden variables and generalisation. Rankings are task-dependent. And none of these statements would mean anything without the reproducibility machinery behind them.
+To summarise. Scientific problems need scientific criteria, anchored at both ends. With those criteria, frontier agents already beat reproduced published methods on most of our tasks, but they fail where science is hardest to fake: uncertainty, causality, hidden variables and generalisation. Rankings are task-dependent. And none of these statements would mean anything without the reproducibility machinery behind them. Finally, in our experiments the models showed no scientific ethics.
 -->
 
 ---
