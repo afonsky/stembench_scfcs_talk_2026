@@ -9,7 +9,7 @@
   >
     <div class="flex">
       <div>
-       <span v-html="$slidev.configs.author"></span> et al. &nbsp;|&nbsp;
+       <span v-html="$slidev.configs.author"></span>, Fedor Ratnikov &nbsp;|&nbsp;
        <span v-html="$slidev.configs.title"></span> &nbsp;|&nbsp;
        FCS Scientific Conference 2026
       </div>
