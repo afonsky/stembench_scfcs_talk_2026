@@ -925,7 +925,7 @@ On two of these, individual runs do cross the expert line, so the problem is con
 # There is no "best model for science"
 
 <center>
-<img src="./scores_domain_means_2.svg" class="h-[430px]"/>
+<img src="/scores_domain_means_2.svg" class="h-[430px]"/>
 </center>
 
 <!--
@@ -1040,7 +1040,7 @@ Every number in this talk can be traced to a logged, re-runnable experiment.
 # Backup: per-task scores for all models
 
 <center>
-<img src="./scores_per_task_2.svg" class="h-[430px]"/>
+<img src="/scores_per_task_2.svg" class="h-[430px]"/>
 </center>
 
 ---
