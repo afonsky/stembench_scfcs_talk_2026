@@ -44,7 +44,7 @@ mdc: true
 
 <br>
 
-#### HSE Voronovo<br> November, 7th, 2026
+#### HSE Voronovo<br> 7 November 2026
 
 <!--
 Good morning. I will talk about how we test whether large language models can do real scientific work, not textbook exercises, and why we put so much effort into making those tests reproducible.
@@ -59,15 +59,13 @@ Good morning. I will talk about how we test whether large language models can do
 
 **How to measure?**
 
-<v-clicks>
 
 - head-to-head comparison tests
 - a well-defined metric
 - win / loss / draw
 
-</v-clicks>
 
-<div v-click class="callout">
+<div class="callout">
 
 AI overtook humans and kept going, without slowing down: **no biological limits**.
 
@@ -101,7 +99,7 @@ AI solves mathematical olympiads
 </div>
 <div class="flex flex-col gap-3">
   <img src="./images/imo_headline.png" class="shot w-[60%] self-center" alt="AI achieves silver-medal standard solving International Mathematical Olympiad problems" />
-  <div v-click class="relative">
+  <div class="relative">
     <img src="./images/chess_elo.png" class="shot w-full" alt="Elo rating of the best chess engine vs. top human players, 1996–2026" />
     <div class="here-circle"></div>
     <div class="here-arrow"></div>
@@ -124,16 +122,14 @@ Compare this with the chess chart: where on that curve are we now? Somewhere aro
 
 Olympiads need problems that are
 
-<v-clicks>
 
 - hard enough that few people can solve them
 - simple enough to be solved in a day
 
-</v-clicks>
 
 </div>
 
-<div v-click class="text-xl mt-6">
+<div class="text-xl mt-6">
 
 Creating such problems for assessment **at the limit of intelligence** is hard.
 
@@ -141,7 +137,7 @@ Creating such problems for assessment **beyond the limit of intelligence** is pr
 
 </div>
 
-<div v-click class="q mt-6 text-xl">
+<div class="q mt-6 text-xl">
 
 …and what for?
 
@@ -168,7 +164,7 @@ An olympiad needs problems that are hard enough that few people can solve them, 
 
 </div>
 <div class="flex flex-col gap-4">
-  <img v-click src="./images/tao_letter.png" class="shot w-full" alt="Terence Tao: A Severe Misalignment of AI in Mathematics" />
+  <img src="./images/tao_letter.png" class="shot w-full" alt="Terence Tao: A Severe Misalignment of AI in Mathematics" />
   <img src="./images/navier_stokes.png" class="shot w-[85%]" alt="On the Navier–Stokes Millennium Prize Problem" />
 </div>
 </div>
@@ -190,7 +186,7 @@ Suppose that for mathematics (and other exact sciences?) AI capability benchmark
 
 </div>
 
-<div v-click class="q">
+<div class="q">
 
 How should AI developers compete for users, attract them to new releases, and justify that model X is the best?
 
@@ -204,9 +200,9 @@ How should AI developers compete for users, attract them to new releases, and ju
 Key theses of the Fields medallists' open letter ("A Severe Misalignment of AI in Mathematics"):
 
 - **Marketing benchmarks:** AI companies use great mathematical problems to show off computing power, not for genuine scientific understanding.
-- **Loss of the value of the journey:** the chase for instant AI answers devalues the human search of many years that created new areas of mathematics.
+- **Loss of the value of the journey:** the chase for instant AI answers devalues the multi-year human search that created new areas of mathematics.
 - **The "black box" problem:** bulky AI-generated proof texts lack human intuition and demand colossal effort from mathematicians to decipher.
-- **Education crisis:** AI dominance in solving key problems destroys the intelligible environment and the motivation for training young researchers.
+- **Education crisis:** AI dominance in solving key problems destroys the understandable environment and the motivation for training young researchers.
 - **Threat to open science:** fearing hidden plagiarism and idea capture by AI companies from private sessions, scientists will stop sharing intermediate results.
 
 </div>
@@ -223,7 +219,7 @@ If benchmarks really harm mathematics, as the open letter argues, then how do AI
 
 <div class="text-xl mt-2">
 
-- Cognition of externally given entities
+- Study of externally given entities
 - No rigorous solutions
 - No exact answers
   - any measurement has a confidence interval
@@ -231,19 +227,17 @@ If benchmarks really harm mathematics, as the open letter argues, then how do AI
 
 </div>
 
-<div v-click class="q mt-4">
+<div class="q mt-4">
 
 How to assess the correctness of a measurement or prediction?
 
 </div>
 
-<v-clicks>
 
 - internal self-consistency
 - consistency with existing observations
 - authoritative subjective assessment of correctness by experts
 
-</v-clicks>
 
 <!--
 Natural sciences are different. We study entities that are given to us from outside, there are no rigorous solutions and no exact answers: every measurement and every prediction comes with an interval. So correctness has to be judged by self-consistency, agreement with observations, or, in the end, by expert opinion.
@@ -268,9 +262,9 @@ Natural sciences are different. We study entities that are given to us from outs
 - Olympiad problems are well-defined "sporting" tasks, formally of the **"Master"** class
 - In reality, olympiad problems lie **outside the class of scientific tasks**: the right answer and the scoring metric are known in advance
 
-<div v-click class="callout mt-6">
+<div class="callout mt-6">
 
-Scientific papers usually present tasks of the **"PhD student"** and **Postdoc** classes. **Postdoc**-level tasks are typically open-ended.
+Scientific papers usually present tasks of the **"PhD student"** and **"Postdoc"** classes. **Postdoc**-level tasks are typically open-ended.
 
 </div>
 
@@ -284,7 +278,6 @@ We grade tasks by the independence they require. A bachelor task is a technical 
 
 <div class="text-xl mt-4 reqs">
 
-<v-clicks>
 
 - Must assess **reasoning**, not the model's memory?
 - Must be **reproducible**?
@@ -293,7 +286,6 @@ We grade tasks by the independence they require. A bachelor task is a technical 
 - Must be **sensitive** to model quality
 - Must not be **too specialised**
 
-</v-clicks>
 
 </div>
 
@@ -303,23 +295,21 @@ What do we need from a benchmark? It should test reasoning and not memory, give 
 
 ---
 
-# LLMs are acing science exams
+# LLMs ace science exams
 
 <div class="grid grid-cols-[1.3fr_1fr] gap-10 mt-4">
 <div>
 
-<v-clicks>
 
 - **Olympiad level.** An agentic system scored 23.5 / 30 on the IPhO 2025 theory problems, placing 14th of 406 contestants
 - **Research calculations.** A Harvard theorist guided an LLM through a real calculation from start to finish, without touching a file himself
 - **"AI scientists".** Autonomous agents run literature → analysis → hypothesis loops for hours. Experts judged 79% of one system's report statements accurate
 
-</v-clicks>
 
 </div>
 <div class="flex flex-col justify-center gap-6">
   <div class="q">Can an LLM do the work of a <b>postdoc</b>?</div>
-  <div v-click class="q">How do we <b>measure</b> it, so that anyone can <b>re-measure</b> it?</div>
+  <div class="q">How do we <b>measure</b> it, so that anyone can <b>re-measure</b> it?</div>
 </div>
 </div>
 
@@ -351,7 +341,7 @@ zoom:1.2
 
 <br>
 
-<div v-click class="callout mt-6 text-xl">
+<div class="callout mt-6 text-xl">
 
 Model commands are executed **inside Docker inside a VM**, with TPU and without internet access. We do not take the tested models at their word.
 
@@ -369,7 +359,6 @@ zoom: 1.1
 
 <div class="text-xl mt-3">
 
-<v-clicks>
 
 - Neither too narrow nor too broad
 - Natural-science problems built around **data processing and analysis**
@@ -378,7 +367,6 @@ zoom: 1.1
   - Astrophysics and solar physics
   - Neural data analysis
 
-</v-clicks>
 
 </div>
 
@@ -397,7 +385,6 @@ zoom: 1.2
 
 **Every run of every model is unique**
 
-<v-clicks>
 
 - the model may use different approaches
 - the model may generate different features
@@ -405,10 +392,9 @@ zoom: 1.2
 - the model may run out of tokens
 - …
 
-</v-clicks>
 
 </div>
-<div v-click class="flex flex-col gap-3 text-lg">
+<div class="flex flex-col gap-3 text-lg">
   <div class="text-base muted">In the pilot project we made three runs each</div>
   <div class="card"><b>Best run</b> – the model's potential</div>
   <div class="card"><b>Worst run</b> – the guaranteed result</div>
@@ -428,17 +414,15 @@ Each run of each model is unique. The model can choose different approaches, gen
 
 **Solving a natural-science problem is not reducible to a single number**
 
-<v-clicks>
 
 - the **correct error** matters (confidence interval)
 - **a priori assumptions** must hold
 - it matters how useful the result is for **downstream tasks**
 
-</v-clicks>
 
 </div>
 
-<div v-click class="callout mt-6 text-lg">
+<div class="callout mt-6 text-lg">
 
 In the pilot project we merged the multiple requirements into one aggregated, **physically motivated metric**. Its reasonableness was confirmed by domain experts.
 
@@ -469,7 +453,7 @@ Solving a natural-science problem is not reducible to one number. The error has 
       <li>calculation and aggregation of the quality metric</li>
     </ul>
   </div>
-  <div v-click class="card">
+  <div class="card">
     <div class="ic"><carbon-view /></div>
     <b>Monitors</b>
     <ul class="mt-2">
@@ -477,7 +461,7 @@ Solving a natural-science problem is not reducible to one number. The error has 
       <li>reasoning traces along the way</li>
     </ul>
   </div>
-  <div v-click class="card">
+  <div class="card">
     <div class="ic"><carbon-warning-alt /></div>
     <b>Detects</b>
     <ul class="mt-2">
@@ -490,18 +474,6 @@ Solving a natural-science problem is not reducible to one number. The error has 
 
 <!--
 The expert is a specialist in all details of the task. The expert controls the task description, the data, the reference baseline and good solutions, and the computation and aggregation of the metric. The expert monitors the delivered solutions and the reasoning traces. And the expert detects data leaks, leaks of formulations, and unphysical solutions.
--->
-
----
-layout: statement
----
-
-# Models have no scientific ethics
-
-The quality of the assessment is determined by the experience and the work invested by the expert.
-
-<!--
-Models have no scientific ethics. So the quality of the assessment is determined by the experience and the labour that the expert invests.
 -->
 
 ---
@@ -555,7 +527,7 @@ By "postdoc level" we mean: someone hands you a well-posed research problem and 
     <div class="ic"><carbon-chart-line /></div>
     <b>Leaderboard rank</b>
     <div class="ex">MLE-bench<br> (Kaggle competitions)</div>
-    <i>Where would you place?</i>
+    <i>Where would it place?</i>
   </div>
   <div class="card">
     <div class="ic"><carbon-user-multiple /></div>
@@ -596,7 +568,7 @@ zoom: 1.05
 | **Solutions** | well-defined correct answer | many admissible methods, *ranked* by quality |
 | **Deliverable** | a number or a formula | working code and a model that generalise to unseen data |
 | **Data** | fits in the prompt | 0.1–10+ GB; deciding what to look at is part of the job |
-| **Scoring** | right / wrong | the field's figure of merit with the correct error (right coverage) of the result number |
+| **Scoring** | right / wrong | the field's figure of merit with correctly calibrated uncertainty on the result |
 | **Failures** | directly visible from the answer | silent: data leakage, unphysical models; only withheld data exposes them |
 | **Ceiling** | 100% | empirical: e.g. 0.75 AUC is the published limit for cross-scanner autism diagnosis |
 
@@ -623,7 +595,7 @@ This table is the core of our problem formulation. Research problems have many a
 - Each problem is scored by the **figure of merit its community already uses** to compare published methods
 - Two **anchors**: "baseline" ($b$) and "expert" ($e$), both obtained by *running code we ship*
   - baseline - minimal solution (e.g. random choice for classification problem)
-  - expert - use some domain knowledge. Not necessary just the best
+  - expert - uses some domain knowledge; not necessary the best
 
 </v-clicks>
 
@@ -708,7 +680,7 @@ zoom: 1.05
 
 <br>
 
-> #### **The agent has to build a physics model to mitigate those traps.** The grader then generates spectra from the predicted parameters in an isolated container.
+> #### **The agent has to build a physics model to handle those traps.** The grader then generates spectra from the predicted parameters in an isolated container.
 
 </div>
 <div class="flex flex-col gap-4">
@@ -848,7 +820,7 @@ The last row is easy to miss: we also require the agent's own solution to be rep
 zoom: 1.2
 ---
 
-# Experiments statistics
+# Experiment statistics
 
 > ## $288$ retained runs: $8$ models × $12$ tasks × $3$ repeats
 
@@ -887,7 +859,7 @@ zoom: 1.15
 
 <div v-click class="callout mt-5">
 
-Each would have produced a confident, but wrong conclusion. Logs and versioned task contracts turned them into footnotes.
+Each would have produced a confident but wrong conclusion. Logs and versioned task contracts turned them into footnotes.
 
 </div>
 
@@ -901,7 +873,7 @@ A batch we believed had larger limits had actually run with the defaults; the lo
 zoom: 1.
 ---
 
-# In 7 of 12 problems agent beats the expert
+# In 7 of 12 problems agent beat the expert
 
 <div class="text-base muted -mt-3 mb-1">8 frontier models · high reasoning effort · mean of 3 runs · identical prompt, tools and budget</div>
 
@@ -935,7 +907,7 @@ zoom: 1.04
 
 <v-clicks>
 
-- The domain knowledge is crucially important here, but agents failed to get into it
+- The domain knowledge is crucially important here, but failed to acquire it
 - Also observed:
   - On digital twins the best agent is still closer to the baseline (0.10) than to the expert
   - Single runs do cross the expert on two of these (autism 0.314, parameters 0.583), so here **reliability** is the gap, not ability
@@ -1000,11 +972,12 @@ And because we record validity separately, we know that a zero is not automatica
 
 <v-clicks>
 
-1. **Science problems have no right answer key.** We approach answer by a combined score metrics favorable by the field experts
+1. **Science problems have no right answer key.** We score answers with a combined metric endorsed by field experts
 2. Frontier agents in our runs **beat reproduced published methods on 7 of 12** research problems
 3. They still fall short on **uncertainty, causal and latent inference, cross-site generalisation**
-4. There is **no single "best model for science"**: the task rather then model drives most of the variation
+4. There is **no single "best model for science"**: the task rather than model drives most of the variation
 5. **Reproducibility is the backbone**: frozen data, fixed containers, deterministic graders, full logs, repeated runs, and an honest record of what went wrong
+6. The quality of the assessment is determined by the **experience** and the work invested by the **expert**
 
 </v-clicks>
 
@@ -1072,6 +1045,6 @@ Every number in this talk can be traced to a logged, re-runnable experiment.
 
 ---
 
-# Backup: example of fragment of reasoning trace
+# Backup: an example fragment of reasoning trace
 
 <img src="/reasoning_trace_fragment.png" class="h-[420px]" alt="An example of fragment of reasoning trace" />
