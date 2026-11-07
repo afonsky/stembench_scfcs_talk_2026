@@ -98,8 +98,18 @@
 .shot { border: 1px solid #e1e0d9; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
 .imo-line { position: absolute; left: 14%; right: 0; border-top: 2px dotted #2a78d6; }
 .imo-line span { position: absolute; left: 30%; bottom: 2px; font-size: 15px; color: #2a78d6; font-weight: 600; }
+.here-circle { position: absolute; left: 24%; top: 36%; width: 16%; height: 30%; border: 3px solid #7b3fa0; border-radius: 50%; }
+.here-arrow { position: absolute; left: 31.5%; top: 66%; height: 16%; border-left: 3px solid #7b3fa0; }
+.here-label { position: absolute; left: 14%; top: 82%; font-size: 17px; font-weight: 600; color: #7b3fa0; }
 .theses ul { margin: 0.3rem 0 0; padding-left: 1rem; }
 .theses li { font-size: 12.5px; line-height: 1.25; margin: 0.1rem 0; }
 .theses p { font-size: 13px; margin: 0; color: #52514e; }
 .lv table { font-size: 14px; }
 .reqs li { margin: 0.5rem 0; }
+
+/* pipeline encapsulation */
+.enc { border-radius: 10px; padding: 0.6rem 1rem; }
+.enc-t { font-weight: 700; margin-bottom: 0.5rem; }
+.enc-vm { border: 2px solid #24414c; background: #f6f9fa; width: 640px; }
+.enc-docker { border: 2px solid #2a78d6; background: #f2f7fd; }
+.enc-agent { border: 2px dashed #5d8392; background: #fff; text-align: center; font-weight: 600; }

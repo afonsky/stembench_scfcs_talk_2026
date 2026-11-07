@@ -86,24 +86,69 @@ Chess is the classic case of a clean measurement: games, a well-defined metric, 
 # IMO
 
 <div class="grid grid-cols-[auto_1fr] gap-10 mt-1 items-start">
-<div class="relative w-[390px]">
+<div class="w-[390px]">
+<div class="relative">
   <img src="./images/imo_2024.png" class="w-full" alt="Score on IMO 2024 problems" />
   <div class="imo-line" style="top: 19.2%"><span>2026 (42/42)</span></div>
   <div class="imo-line" style="top: 30.8%"><span>2025 (35/42)</span></div>
   <div class="imo-line" style="top: 42.4%"><span>2024 (28/42)</span></div>
 </div>
-<div class="flex flex-col gap-6">
-  <img src="./images/imo_headline.png" class="shot w-full" alt="AI achieves silver-medal standard solving International Mathematical Olympiad problems" />
-  <div v-click class="callout text-lg">
+  <div class="callout text-lg mt-2">
 
 AI solves mathematical olympiads
 
+  </div>
+</div>
+<div class="flex flex-col gap-3">
+  <img src="./images/imo_headline.png" class="shot w-[60%] self-center" alt="AI achieves silver-medal standard solving International Mathematical Olympiad problems" />
+  <div v-click class="relative">
+    <img src="./images/chess_elo.png" class="shot w-full" alt="Elo rating of the best chess engine vs. top human players, 1996–2026" />
+    <div class="here-circle"></div>
+    <div class="here-arrow"></div>
+    <div class="here-label">We are somewhere here?</div>
   </div>
 </div>
 </div>
 
 <!--
 Mathematical olympiads: in 2024 a system got 28 of 42 points, a silver-medal standard. In 2025 it scored 35, and in 2026 the full 42.
+
+Compare this with the chess chart: where on that curve are we now? Somewhere around the moment when the engine caught up with the best humans.
+-->
+
+---
+
+# Olympiads of the future
+
+<div class="text-xl mt-4">
+
+Olympiads need problems that are
+
+<v-clicks>
+
+- hard enough that few people can solve them
+- simple enough to be solved in a day
+
+</v-clicks>
+
+</div>
+
+<div v-click class="text-xl mt-6">
+
+Creating such problems for assessment **at the limit of intelligence** is hard.
+
+Creating such problems for assessment **beyond the limit of intelligence** is practically impossible.
+
+</div>
+
+<div v-click class="q mt-6 text-xl">
+
+…and what for?
+
+</div>
+
+<!--
+An olympiad needs problems that are hard enough that few people can solve them, but simple enough to be solved in a day. Building such problems at the limit of intelligence is hard. Beyond that limit it is practically impossible. And then, what is the point?
 -->
 
 ---
@@ -244,7 +289,7 @@ We grade tasks by the independence they require. A bachelor task is a technical 
 - Must assess **reasoning**, not the model's memory?
 - Must be **reproducible**?
 - Must assess the **best, median or worst** solution?
-- Must give a **quantitative** score
+- Must give a **quantitative** score?
 - Must be **sensitive** to model quality
 - Must not be **too specialised**
 
@@ -284,6 +329,179 @@ What do we need from a benchmark? It should test reasoning and not memory, give 
 The progress is real. Olympiad problems, guided research calculations, autonomous "AI scientist" loops.
 
 So the natural question is whether an LLM can do what a postdoc does. As physicists we immediately ask a second question: how do we measure that, in a way someone else can repeat and get the same number? That second question runs through the whole talk.
+-->
+
+---
+zoom:1.2
+---
+
+# Encapsulating the pipeline
+
+<br>
+
+<div class="flex justify-center mt-4">
+  <div class="enc enc-vm">
+    <div class="enc-t"><carbon-virtual-machine class="inline" /> VM · with GPU · no internet access</div>
+    <div class="enc enc-docker">
+      <div class="enc-t"><carbon-container-software class="inline" /> Docker</div>
+      <div class="enc enc-agent"><carbon-bot class="inline" /> Model's commands</div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div v-click class="callout mt-6 text-xl">
+
+Model commands are executed **inside Docker inside a VM**, with TPU and without internet access. We do not take the tested models at their word.
+
+</div>
+
+<!--
+The commands of the model are executed inside Docker inside a VM. The VM has a TPU and no internet access. We do not trust the tested models on their word: everything they do happens in a closed box that we control.
+-->
+
+---
+zoom: 1.1
+---
+
+# Choosing the domains
+
+<div class="text-xl mt-3">
+
+<v-clicks>
+
+- Neither too narrow nor too broad
+- Natural-science problems built around **data processing and analysis**
+- Fields where the team members have **scientific expertise**:
+  - High-energy physics
+  - Astrophysics and solar physics
+  - Neural data analysis
+
+</v-clicks>
+
+</div>
+
+<!--
+The domains should be neither too narrow nor too broad. We take natural-science problems that revolve around data processing and analysis, in areas where members of our team have real scientific expertise: high-energy physics, astrophysics and solar physics, and neural data analysis.
+-->
+
+---
+zoom: 1.2
+---
+
+# Statistical analysis
+
+<div class="grid grid-cols-[1.2fr_1fr] gap-8 mt-2">
+<div class="text-lg">
+
+**Every run of every model is unique**
+
+<v-clicks>
+
+- the model may use different approaches
+- the model may generate different features
+- the model may run out of time
+- the model may run out of tokens
+- …
+
+</v-clicks>
+
+</div>
+<div v-click class="flex flex-col gap-3 text-lg">
+  <div class="text-base muted">In the pilot project we made three runs each</div>
+  <div class="card"><b>Best run</b> – the model's potential</div>
+  <div class="card"><b>Worst run</b> – the guaranteed result</div>
+  <div class="card"><b>Median run</b> – a compromise</div>
+</div>
+</div>
+
+<!--
+Each run of each model is unique. The model can choose different approaches, generate different features, run out of time or run out of tokens. In the pilot we did three runs per model. The best run shows the potential of the model, the worst run is the result you are guaranteed to get, and the median is a compromise.
+-->
+
+---
+
+# The grader problem
+
+<div class="text-lg mt-2">
+
+**Solving a natural-science problem is not reducible to a single number**
+
+<v-clicks>
+
+- the **correct error** matters (confidence interval)
+- **a priori assumptions** must hold
+- it matters how useful the result is for **downstream tasks**
+
+</v-clicks>
+
+</div>
+
+<div v-click class="callout mt-6 text-lg">
+
+In the pilot project we merged the multiple requirements into one aggregated, **physically motivated metric**. Its reasonableness was confirmed by domain experts.
+
+</div>
+
+<!--
+Solving a natural-science problem is not reducible to one number. The error has to be right, which means a correct confidence interval. The a priori assumptions have to hold. And the result has to be useful for downstream tasks. In the pilot we collapsed all these requirements into one aggregated, physically motivated metric, and domain experts confirmed that it is reasonable.
+-->
+
+---
+
+# The role of experts
+
+<div class="text-lg mt-1">
+
+**A specialist in every detail of the task.**
+
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-3 text-base">
+  <div class="card">
+    <div class="ic"><carbon-settings /></div>
+    <b>Controls</b>
+    <ul class="mt-2">
+      <li>task description and formulation</li>
+      <li>content and organisation of the data</li>
+      <li>samples and signatures of baseline and "good" solutions</li>
+      <li>calculation and aggregation of the quality metric</li>
+    </ul>
+  </div>
+  <div v-click class="card">
+    <div class="ic"><carbon-view /></div>
+    <b>Monitors</b>
+    <ul class="mt-2">
+      <li>the delivered solutions</li>
+      <li>reasoning traces along the way</li>
+    </ul>
+  </div>
+  <div v-click class="card">
+    <div class="ic"><carbon-warning-alt /></div>
+    <b>Detects</b>
+    <ul class="mt-2">
+      <li>data leaks</li>
+      <li>leaks of formulations</li>
+      <li>physicality of solutions</li>
+    </ul>
+  </div>
+</div>
+
+<!--
+The expert is a specialist in all details of the task. The expert controls the task description, the data, the reference baseline and good solutions, and the computation and aggregation of the metric. The expert monitors the delivered solutions and the reasoning traces. And the expert detects data leaks, leaks of formulations, and unphysical solutions.
+-->
+
+---
+layout: statement
+---
+
+# Models have no scientific ethics
+
+The quality of the assessment is determined by the experience and the work invested by the expert.
+
+<!--
+Models have no scientific ethics. So the quality of the assessment is determined by the experience and the labour that the expert invests.
 -->
 
 ---
